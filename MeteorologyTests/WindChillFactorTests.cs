@@ -28,34 +28,7 @@ namespace MeteorologyTests
             Assert.Equal(expectedCelsius, celsiusResult, 4);
         }
 
-        [Fact]
-        public void TestCalculateWindChillFactorFailOnLowWindSpeed()
-        {
-            // Arrange
-            Temperature temperature = new(5, Temperature.Scale.Celsius);
-            WindSpeed windSpeed = new(2, WindSpeed.Unit.MilesPerHour);
-            string expectedMessage = "Windspeed too low";
-
-            // Act
-            Exception exResult = Assert.Throws<MeteorologyException>(() => new WindChillFactor(temperature, windSpeed));
-
-            // Assert
-            Assert.Equal(expectedMessage, exResult.Message);
-        }
-
-        [Fact]
-        public void TestCreateWindChillFactorWithTemperatureTooHigh()
-        {
-            // Arrange
-            Temperature temperature = new(50, Temperature.Scale.Fahrenheit);
-            WindSpeed windSpeed = new(9, WindSpeed.Unit.MilesPerHour);
-            string expectedMessage = "Temperature too high";
-
-            // Act
-            Exception exResult = Assert.Throws<MeteorologyException>(() => new WindChillFactor(temperature, windSpeed));
-
-            // Assert
-            Assert.Equal(expectedMessage, exResult.Message);
-        }
+        // TODO: Create tests that validates that a wind speed too low
+        //       or a too high temperature is rejected
     }
 }
